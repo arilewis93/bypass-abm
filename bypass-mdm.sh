@@ -50,10 +50,9 @@ select opt in "${options[@]}"; do
             dscl -f "$dscl_path" localhost -append "/Local/Default/Groups/admin" GroupMembership $username
 
             # Block MDM domains
-            sudo mount -uw /
-            echo "0.0.0.0 deviceenrollment.apple.com" | sudo tee -a /etc/hosts
-            echo "0.0.0.0 mdmenrollment.apple.com" | sudo tee -a /etc/hosts
-            echo "0.0.0.0 iprofiles.apple.com" | sudo tee -a /etc/hosts
+            echo "0.0.0.0 deviceenrollment.apple.com" >>/Volumes/Macintosh\ HD/etc/hosts
+            echo "0.0.0.0 mdmenrollment.apple.com" >>/Volumes/Macintosh\ HD/etc/hosts
+            echo "0.0.0.0 iprofiles.apple.com" >>/Volumes/Macintosh\ HD/etc/hosts
             echo -e "${GRN}Successfully blocked MDM & Profile Domains"
 
             # Remove configuration profiles
