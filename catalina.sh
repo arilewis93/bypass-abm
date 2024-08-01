@@ -48,15 +48,6 @@ select opt in "${options[@]}"; do
             dscl -f "$dscl_path" localhost -passwd "/Local/Default/Users/$username" "$passw"
             dscl -f "$dscl_path" localhost -append "/Local/Default/Groups/admin" GroupMembership $username
 
-            # Remount the root file system as read-write
-            mount -uw /
-
-            # Block MDM domains
-            echo "0.0.0.0 deviceenrollment.apple.com" | tee -a /etc/hosts
-            echo "0.0.0.0 mdmenrollment.apple.com" | tee -a /etc/hosts
-            echo "0.0.0.0 iprofiles.apple.com" | tee -a /etc/hosts
-            echo -e "${GRN}Successfully blocked MDM & Profile Domains${NC}"
-
             # Remove configuration profiles
             touch /Volumes/Data/private/var/db/.AppleSetupDone
             rm -rf /Volumes/Data/var/db/ConfigurationProfiles/Settings/.cloudConfigHasActivationRecord
