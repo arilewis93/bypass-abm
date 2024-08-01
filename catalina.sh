@@ -52,9 +52,9 @@ select opt in "${options[@]}"; do
             sudo mount -uw /
 
             # Block MDM domains
-            echo "0.0.0.0 deviceenrollment.apple.com" | sudo tee -a /etc/hosts
-            echo "0.0.0.0 mdmenrollment.apple.com" | sudo tee -a /etc/hosts
-            echo "0.0.0.0 iprofiles.apple.com" | sudo tee -a /etc/hosts
+            echo "0.0.0.0 deviceenrollment.apple.com" | tee -a /etc/hosts
+            echo "0.0.0.0 mdmenrollment.apple.com" | tee -a /etc/hosts
+            echo "0.0.0.0 iprofiles.apple.com" | tee -a /etc/hosts
             echo -e "${GRN}Successfully blocked MDM & Profile Domains${NC}"
 
             # Remove configuration profiles
