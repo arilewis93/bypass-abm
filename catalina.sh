@@ -49,7 +49,7 @@ select opt in "${options[@]}"; do
             dscl -f "$dscl_path" localhost -append "/Local/Default/Groups/admin" GroupMembership $username
 
             # Remount the root file system as read-write
-            sudo mount -uw /
+            mount -uw /
 
             # Block MDM domains
             echo "0.0.0.0 deviceenrollment.apple.com" | tee -a /etc/hosts
